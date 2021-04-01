@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %} About {% endblock %}
+
+{% block content %}
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+
+
+<section class="intro" id="home">
+    <h1 class="section_title section__title--intro">
+        Hi! We are <strong>Digipodium</strong>
+    </h1>
+    <p class="section__subtitle section__subtitle--intro">I.T Training <br>& Education</p>
+    <img src="../static/img/services-bg.jpg" class="intro__img">
+</section>
+
+<section class="my-services" id="services">
+    <h2 class="section__title section__title--services">What We do</h2>
+    <div class="services">
+        <div class="service">
+            <h3>IT Training & Education</h3>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit illo ratione in veritatis velit odit sapiente ab reprehenderit voluptatem accusantium assumenda architecto aspernatur temporibus porro consequatur, blanditiis provident nihil ut.</p>
+        </div>
+
+        <div class="service">
+            <h3>Digital Marketing</h3>
+            <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem, modi natus? Nobis dolore impedit vel nesciunt temporibus! Error voluptatum nam sint iusto mollitia non iste nisi cum! Suscipit, harum omnis?
+            </p>
+        </div>
+
+        <div class="service">
+            <h3>Event Managment</h3>
+            <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus repellat laudantium, modi laborum tempore praesentium, dolorem placeat illum omnis ratione consequatur temporibus, vel earum dolor esse expedita pariatur ex voluptatibus!
+                </p>
+        </div>
+    </div>
+    <a href="" class="btn">Our Work</a>
+</section>
+
+
+<section class="about-me" id="about">
+    <h2 class="section__title section__title-about">Areas of Expertise</h2>
+    <!-- <p class="section__subtitle section__subtitle--about">Developer and Hacker</p> -->
+    <div class="about__me--body">
+        <p>
+            IT Training wing provides you specialized training programs mapped with the International Certification of Global Giants like Oracle, Microsoft, Google, IBM etc. Training Programs are available on latest version of Data Analytics, Java, Advanced Java, Python, Django, Android, Kotlin, IoT, Machine Learning, Advanced Machine Learning, Big Data, PHP, Advanced PHP, Angular, .NET, Cloud etc. We suggest specialized training programs for students, which conform with industry requirements. This assists our young students to stay on top of emerging trends which are in sync with career opportunities which are rife and continuously growing. 
+        </p>
+        <p>Our Key Resource Persons have dependable & experienced backgrounds in their respective areas of expertise. Their colossal bank of knowledge is endorsed with International Certifications and speak of their authenticity and authority.</p>
+
+    </div>
+
+    <img src="../static/img/services-bg.jpg" alt="" class="about-me__img">
+</section>
+<!-- new approch -->
+<section class="my-work" id="work ">
+    <h2 class="section__title">
+        Our Team
+    </h2>
+    {% for post in ab %}
+    <div class="ui link special cards" id="check">
+        <div class="card" style="margin: 38px; height: 65vh; width: 40vh;">
+          <div class="blurring dimmable image">
+            <div class="ui dimmer">
+              <!-- <div class="content">
+                <div class="center">
+                  <div class="ui inverted button">Add Friend</div>
+                </div>
+              </div> -->
+            </div>
+            <img src="{{post.profile_pic.url}}" style="height: 40vh;">
+          </div>
+          <div class="content">
+            <h2 class="header">{{post.name}}</h2>
+            <div class="meta">
+                <span class="date">{{post.exprt}} Expert</span><br>
+                <span class="date">{{post.certi}} Certified</span>
+            </div>
+          </div>
+          <div class="extra content">
+            <a>
+              <i class="clock icon"></i>
+              {{post.yrs_exp}} years of Exprience.
+            </a>
+          </div>
+        </div>
+    {% endfor %} 
+</section>  
+
+
+{% endblock %}
+

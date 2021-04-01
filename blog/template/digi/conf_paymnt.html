@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Confirm Payment{% endblock %}
+
+{% block content %}
+
+
+<div>
+    {% for payment in payy%}
+
+        <h4>
+            {{ payment.name}}
+        </h4>
+        <h4>
+            {{ payment.last_name}}
+        </h4>
+    {% endfor %}
+</div>
+
+
+
+{% endblock %}

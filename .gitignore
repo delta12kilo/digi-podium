@@ -1,0 +1,12 @@
+blog/__pycache__
+blog/migrations
+mysite/__pycache__
+db.sqlite3
+db1.sqlite3
+blog/static/js
+blog/template/digi/about.html
+blog/template/digi/ee.html
+sophomore
+products/__pycache__
+products/migrations
+media

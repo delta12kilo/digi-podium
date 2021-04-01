@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block title %} My Portfolio {% endblock %}
+
+{% block content %}
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Payment
+</button>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">PAYMENT</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <!-- <form method="post"> -->
+          <div class="modal-body">
+              {% crispy form form.helper %}            
+          </div>
+          <!-- <div class="modal-footer">
+             <button type="submit" class="btn btn-primary">Submit</button>  
+          </div> -->
+      <!-- </form> -->
+      </div>
+    </div>
+  </div>
+  
+
+{% endblock %}
