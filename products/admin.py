@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import allCourses, CourseFetures
+from .models import It_allCourses,sophomore
 
 # Register your models here.
 
-@admin.register(allCourses)
+@admin.register(It_allCourses)
 class AllCourses(admin.ModelAdmin):
     list_display = (
         'courseId','courseTitle',
@@ -12,7 +12,9 @@ class AllCourses(admin.ModelAdmin):
     list_filter = ('courseTag','courseSlug')
 
 
-
-@admin.register(CourseFetures)
-class courseFet(admin.ModelAdmin):
-    list_display = ('courseFeatures',)
+@admin.register(sophomore)
+class Sophomore(admin.ModelAdmin):
+    list_display = (
+        's_courseID','s_courseheading',
+        's_course_slug', 's_course_price'
+    )
