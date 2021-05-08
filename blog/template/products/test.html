@@ -1,14 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>
-        This is test
-    </h1>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %} About {% endblock %}
+
+{% block content %}
+
+    <section>
+        {% for prods in prod%}
+        <div class="ui link special cards" id="check">
+            <div class="card" style="margin: 38px; height: 65vh; width: 40vh;">
+              <div class="blurring dimmable image">
+                <div class="ui dimmer">
+                  <!-- <div class="content">
+                    <div class="center">
+                      <div class="ui inverted button">Add Friend</div>
+                    </div>
+                  </div> -->
+                </div>
+                <img src="{{prods.courseImage.url}}" style="height: 40vh;">
+              </div>
+              <div class="content">
+                <h2 class="header">{{prods.courseTitle}}</h2>
+                <div class="meta">
+                    <span class="date">{{prods.courseDiscrp}} Expert</span><br>
+                    <span class="date">{{prods.courseVersion}} Version</span><br>
+                    <a href="#">
+                        <strong>View Details</strong>
+                    </a>
+                </div>
+              </div>
+              <div class="extra content">
+                <a href="{{ prods.get_absolute_url }}">
+                  <i class="money icon"></i>
+                  {{prods.coursePrice}} Rs
+                </a>
+              </div>
+            </div>
+
+        {% endfor%}
+    </section>
+
+
+
+{% endblock %}

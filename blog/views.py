@@ -15,8 +15,9 @@ def testform(request):
         form = PaymentForm(request.POST)
         if form.is_valid():
             form.save()
-            print(form.data)
+            # print(form.data)
             # return redirect(reverse('post',kwargs={'post':post}))
+            return redirect('/test')
 
     else:       
         form = PaymentForm()

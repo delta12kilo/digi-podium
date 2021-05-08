@@ -1,10 +1,25 @@
 from django.db import models
 from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
+from django.urls import reverse
+from django.utils.timezone import now as n
+from datetime import date
 # Create your models here.
 
+course = [
+    ('mca','M.C.A'),
+    ('bca','B.C.A'),
+    ('btech','B.Tech'),
+    ('bsc','BSc'),
+    ('bvoc', 'B.voc')
+]
 
-
+years = [
+    ('1','one'),
+    ('2','two'),
+    ('3','three'),
+    ('4','four')
+]
 
 class It_allCourses(models.Model):
     courseId = models.AutoField(primary_key=True)
@@ -29,8 +44,15 @@ class It_allCourses(models.Model):
     def __str__(self):
         return self.courseTitle
 
+    def get_absolute_url(self):
+        return reverse('npro:nproo',
+                        args=[self.courseSlug])
+
+
+    objects = models.Manager()
 
 class sophomore(models.Model):
+
     s_courseID = models.AutoField(primary_key=True)
     s_courseheading = models.CharField(max_length=250)
     s_course_desc = models.TextField()
@@ -52,3 +74,51 @@ class sophomore(models.Model):
     def _str__(self):
 
         return self.s_courseheading
+
+    objects = models.Manager()
+
+
+
+
+def gen_reg_no():
+        
+    try:
+        curr = date.today()
+        yr = curr.year
+        last_reg = enrool.objects.all().order_by('e_id').last()
+        id_value = int(last_reg.reg_id.split('/')[-1])+1
+        
+    except Exception as err:
+        id_value = 1
+        print(err)
+        # raise err
+
+    return f'DP/{yr}/{id_value}'
+
+#TODO: change names 
+class enrool(models.Model):
+        
+    e_id = models.AutoField(primary_key=True)
+    reg_id = models.CharField(max_length=15,unique=True, default=gen_reg_no)
+    firstName = models.CharField(max_length=100)
+    lastName = models.CharField(max_length=100)
+    imgupl = models.ImageField(upload_to='enroll',default="None")
+    email = models.EmailField(default="None")
+    
+    phoneNumber = models.CharField(max_length=15,default='1234')
+    WphoneNumber = models.CharField(max_length=15,default='1234')
+
+    collegess = models.CharField(max_length=100, default='CollegeName')
+
+    courses = models.CharField(max_length=6, default="None")
+    year = models.CharField(max_length=1, default="None")
+    created = models.DateTimeField(auto_now_add=True)
+    program = models.CharField(max_length=100,default="None")    
+    price = models.CharField(max_length=100,default="None")
+
+    def __str__(self):
+        return self.firstName
+
+
+    objects = models.Manager()
+

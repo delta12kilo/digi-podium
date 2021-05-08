@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% block title %} About {% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="../../static/css/enroll_form.css">
+
+    <div class="box">
+		<div id="alert-box"></div>
+		<div class="main_box">
+			<form method="POST" 
+				  id="test-form" 
+				  autocomplete="off">
+
+				{% csrf_token %}
+
+				<span class="heading">
+					<h1>Enroll for {{pro.courseTitle}}</h1><br>
+				</span>
+				<div class="ui form" id="main_form">
+					<div class="fields" >
+						<div class="field">
+							<input 
+								type="text" id="firstname" class="form-control" 
+								name="firstName" 
+								{% if form.is_bound %}value="{{ form.firstName.value }}"{% endif %}
+								placeholder="First Name" required
+							>
+							{% for err in form.firstName.errors %}
+								<small class="text-dange ml-2">{{err}}</small>
+							{%endfor%}
+						</div>
+						<div class="field">
+							<input 
+								type="text" id="lastname" class="form-control" 
+								name="lastName"
+								{% if form.is_bound %}value="{{ form.lastName.value }}"{% endif %} 
+								placeholder="Last Name" required
+							>
+							{% for err in form.lastName.errors %}
+								<small class="text-dange ml-2">{{err}}</small>
+							{%endfor%}
+						</div>
+						
+						<div class="ui medium image" id="img-box1">
+							<i class="user icon" id="prev">
+								<!-- <img src="/static/img/devdeepk.jpg" /> -->
+							</i>
+							<div class="img-box2">
+								<i class="camera icon" id="upload-box">
+									<input 
+										accept="image/*" id="img-c" type="file" name="uploadImage"
+										
+									>								
+								</i>
+							</div>
+						</div>
+						
+					</div>
+					<div class="fields">
+						<div class="field">
+							<input 
+								type="email" id="emailname" class="form-control" name="email"
+								{% if form.is_bound %}value="{{ form.email.value }}"{% endif %} 
+								placeholder="Email" required
+							>
+							
+						</div>
+						<div class="field">
+							<input 
+								type="tel" id="contact" class="form-control" 
+								name="phoneNumber"
+								{% if form.is_bound %}value="{{ form.phoneNumber.value }}"{% endif %} 
+								placeholder="Contact Number" 
+								pattern="[0-9]{10}" required 
+							>
+							
+						</div>
+						
+					</div>
+
+					<div class="fields">
+						<div class="field">
+							<input 
+								type="tel" id="wcontact" class="form-control" 
+								name="WphoneNumber"
+								{% if form.is_bound %}value="{{ form.WphoneNumber.value }}"{% endif %} 
+								placeholder="WhatsApp Contact Number" 
+								pattern="[0-9]{10}" required 
+							>
+							
+						</div>
+
+						<div class="field">
+							<input 
+								type="text" id="colleg" class="form-control" 
+								name="collegess" 
+								{% if form.is_bound %}value="{{ form.collegess.value }}"{% endif %}
+								placeholder="University/College" required
+							>
+							
+						</div>
+					</div>
+
+					
+						<div class="two fields">
+							<div class="field">
+								<!-- <label>State</label> -->
+							  	<select class="ui fluid dropdown" name="courses" id="course">
+									<option  value="">Pursuing</option>
+									<option value="btech">B.Tech</option>
+									<option value="bca">B.C.A</option>
+									<option value="mca">M.C.A</option>
+									<option value="bsc">B.Sc</option>
+									<option value="bvoc">B.VOC</option>
+									
+								</select>
+							</div>
+							<div class="field">
+								<!-- <label>State</label> -->
+							  	<select class="ui fluid dropdown" name="years" id="cur_year">
+									<option value="">College Year</option>
+									<option value="first">1 Year </option>
+									<option value="second">2 Year</option>
+									<option value="third">3 Year</option>
+									<option value="fourth">4 Year</option>
+									
+								</select>
+							</div>
+						</div>	
+						<div class="fields">
+							<div class="field">
+								<input 
+									type="text" id="prog" class="form-control disable-pointer" name="program"
+									value="{{ pro.courseTitle }}"  
+									placeholder="Programm" disabled
+								>
+								<!-- {% for err in form.program.errors %}
+									<small class="text-dange ml-2">{{err}}</small>
+								{%endfor%} -->
+							</div>
+							<div class="field">
+								<input 
+									type="text" id="price" class="form-control disable-pointer" name="price"
+									value="{{ pro.coursePrice }} Rs."  
+									placeholder="Programm" disabled
+								>
+								<!-- {% for err in form.program.errors %}
+									<small class="text-dange ml-2">{{err}}</small>
+								{%endfor%} -->
+							</div>
+						</div>
+					
+						<br>
+						
+					<!-- <h3>{{pro.courseSlug}}</h3> -->
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
+			</form>
+		</div>
+      
+    </div>
+
+
+{% endblock %}

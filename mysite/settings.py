@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'blog',
     'products',
     'crispy_forms',
-    'taggit'
+    'taggit',
+    'enroll'
 ]
 
 MIDDLEWARE = [
@@ -81,7 +82,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db1.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'db2.sqlite3'),
     }
 }
 
@@ -118,6 +119,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+# crispy
+
+CRISPY_TEMPLATE_PACK = 'bootstrap'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
@@ -150,7 +155,7 @@ JAZZMIN_SETTINGS = {
         {"model": "auth.User"},
 
         # App with dropdown menu to all its models pages (Permissions checked against models)
-        {"app": "books"},
+        # {"app": "books"},
     ],
     "icons": {
         "auth": "fas fa-users-cog",

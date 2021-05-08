@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %} About {% endblock %}
+
+{% block content %}
+
+<form method="POST" id="test-form" autocomplete="off">
+
+    {% csrf_token %}
+
+    {{form|crispy }}
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form> 
+
+
+{% endblock %}
