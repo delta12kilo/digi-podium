@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import It_allCourses,sophomore, enrool
+from .models import It_allCourses,sophomore, enroll, Installment
 
 # Register your models here.
 
@@ -21,7 +21,7 @@ class Sophomore(admin.ModelAdmin):
 
     
 
-@admin.register(enrool)
+@admin.register(enroll)
 class Enroll(admin.ModelAdmin):
     list_display = ('e_id','firstName',
                     'lastName','courses','email', 
@@ -29,3 +29,10 @@ class Enroll(admin.ModelAdmin):
                 )
 
     list_filter = ('program','courses')
+
+@admin.register(Installment)
+class installment(admin.ModelAdmin):
+    list_display = ('enr_id','enrollment_no',
+                    'amount')
+
+    list_filter = ('enrollment_no',)

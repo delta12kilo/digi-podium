@@ -1,8 +1,17 @@
+# cache
+
 blog/__pycache__
 blog/migrations
 mysite/__pycache__
+
+# database
+
 db.sqlite3
 db1.sqlite3
+db2.sqlite3
+
+# usual
+
 blog/static/js
 blog/template/digi/about.html
 blog/template/digi/ee.html

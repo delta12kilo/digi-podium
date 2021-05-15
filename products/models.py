@@ -1,9 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.fields import AutoField, CharField, FloatField
+from django.db.models.fields.related import ForeignKey
 from taggit.managers import TaggableManager
 from django.urls import reverse
 from django.utils.timezone import now as n
-from datetime import date
+from datetime import date, datetime
 # Create your models here.
 
 course = [
@@ -78,14 +80,12 @@ class sophomore(models.Model):
     objects = models.Manager()
 
 
-
-
 def gen_reg_no():
         
     try:
         curr = date.today()
         yr = curr.year
-        last_reg = enrool.objects.all().order_by('e_id').last()
+        last_reg = enroll.objects.all().order_by('e_id').last()
         id_value = int(last_reg.reg_id.split('/')[-1])+1
         
     except Exception as err:
@@ -96,10 +96,10 @@ def gen_reg_no():
     return f'DP/{yr}/{id_value}'
 
 #TODO: change names 
-class enrool(models.Model):
+class enroll(models.Model):
         
     e_id = models.AutoField(primary_key=True)
-    reg_id = models.CharField(max_length=15,unique=True, default=gen_reg_no)
+    reg_id = models.CharField( max_length=15,unique=True, default=gen_reg_no)
     firstName = models.CharField(max_length=100)
     lastName = models.CharField(max_length=100)
     imgupl = models.ImageField(upload_to='enroll',default="None")
@@ -117,8 +117,20 @@ class enrool(models.Model):
     price = models.CharField(max_length=100,default="None")
 
     def __str__(self):
-        return self.firstName
+        return self.reg_id
 
 
     objects = models.Manager()
 
+class Installment(models.Model) :
+    enr_id = models.AutoField(primary_key=True)
+    enrollment_no = models.OneToOneField(enroll, on_delete=models.CASCADE)
+    amount = models.FloatField()
+    transaction_no = models.CharField(max_length=100)
+    submit = models.DateTimeField(default=datetime.now())
+
+    def __str__(self) -> str:
+        return self.transaction_no
+
+
+    

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import View
-from .models import It_allCourses, sophomore, enrool
+from .models import It_allCourses, sophomore, enroll
 from django.http import HttpResponse
 from products.forms import registerForms
 # from enroll.forms import test_form
@@ -33,7 +33,7 @@ class registerStuff(View):
         
         form = registerForms(request.POST, request.FILES)
 
-        enr = enrool.objects.all()
+        enr = enroll.objects.all()
         data = {}
         if request.method == "POST":
 
@@ -50,7 +50,7 @@ class registerStuff(View):
                 ph = request.POST.get('phoneNumber')
                 yr = request.POST.get('years')
 
-                enrl = enrool(
+                enrl = enroll(
                     firstName= firstname,
                     lastName = lastname,
                     courses = course,

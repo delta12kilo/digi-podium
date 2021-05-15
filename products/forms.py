@@ -1,5 +1,5 @@
 from django import forms
-from products.models import enrool
+from products.models import enroll
 from django.core.exceptions import ValidationError
 
 class registerForms(forms.ModelForm):
@@ -21,7 +21,7 @@ class registerForms(forms.ModelForm):
 
 
     class Meta:
-        model = enrool
+        model = enroll
         fields = '__all__'
 
 
@@ -30,7 +30,7 @@ class registerForms(forms.ModelForm):
         firtName = self.cleaned_data.get('firstName')
         lastNam = self.cleaned_data.get('lastName')
 
-        if firtName == "" :
+        if firtName == None:
             self._errors['firstName'] = self.error_class(["Can't leave empty"])
             # raise ValidationError('Enter "Deepak" nothing else')
         if lastNam != 'kumar':
